@@ -1,4 +1,4 @@
-name: Release Novo Elements (new)
+name: Publish Novo Elements
 on:
   workflow_dispatch:
     inputs:
@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.22.0
+          registry-url: 'https://registry.npmjs.org'
       - name: Update npm
         run: npm install -g npm@10.9.7
       - name: Install Dependencies
@@ -31,9 +32,8 @@ jobs:
       - name: Building Projects
         run: |
           npm run build:ci
-      - name: Release
+      - name: Publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npx semantic-release --dry-run ${{ github.event.inputs.dry-run }}
+          npm publish dist/novo-elements${{ github.event.inputs.dry-run == 'true' && ' --dry-run' || '' }}
