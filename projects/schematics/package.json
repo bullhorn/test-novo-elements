@@ -1,6 +1,6 @@
 {
   "name": "schematics",
-  "version": "13.0.2",
+  "version": "13.0.3",
   "description": "A novo-element schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
