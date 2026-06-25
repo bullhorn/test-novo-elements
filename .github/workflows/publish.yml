@@ -40,4 +40,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          npm publish dist/novo-elements${{ github.event.inputs.dry-run == 'true' && ' --dry-run' || '' }}
+          npm publish ./dist/novo-elements --dry-run
