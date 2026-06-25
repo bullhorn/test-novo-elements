@@ -1,6 +1,6 @@
 {
   "name": "novo-elements",
-  "version": "13.0.1",
+  "version": "202608.0.0",
   "sideEffects": true,
   "peerDependencies": {
     "@angular/animations": ">=20",
